@@ -48,3 +48,6 @@ body.landing {
      font-size: 5rem;
  }
 
+.clearfix {
+    position: relative;
+}
