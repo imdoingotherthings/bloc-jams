@@ -37,7 +37,7 @@ body {
      text-decoration: none;
  }
 
-.links-container .navbar-link:hover {
+.links-container .navbar-link {
      display: table-cell;
      position: relative;
      height: 100%;
@@ -104,5 +104,6 @@ body {
 img {
     padding: 1%;
 }
+
 
 
