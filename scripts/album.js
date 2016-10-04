@@ -56,10 +56,10 @@ var createSongRow = function(songNumber, songName, songLength) {
 
 // Select elements that we want to populate with text dynamically 
 var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
  
 var setCurrentAlbum = function(album) {
     // Assign values to each part of the album (text, images)
@@ -80,10 +80,14 @@ var setCurrentAlbum = function(album) {
 
 var findParentByClassName = function(element, targetClass) {
 	
-	if (findParentByClassName === null)
-		{
-			alert("Cannot find Parent class");
+		if (element.parentElement === null)	{
+			alert("No parent found");
+		} else if (element.parentElement === document.getElementsByClassName('album-view-song-title')) {
+			alert("There is a parent");	
+		} else if (targetClass.parentElement === null){
+			alert("No parent found with that class name");
 		}
+	
     if (element) {
         var currentParent = element.parentElement;
         while (currentParent.className != targetClass && currentParent.className !== null) {
@@ -131,7 +135,7 @@ var clickHandler = function(targetElement) {
  };
 
 // Elements we'll add listeners to
-var setListContainer = document.getElementsByClassName('album-view-song-list')[0];
+var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
 var songRows = document.getElementsByClassName('album-view-song-item');
 
 // Album button templates 
@@ -144,46 +148,49 @@ var currentlyPlayingSong = null;
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
     
-    setListContainer.addEventListener('mouseover', function(event) {
+    songListContainer.addEventListener('mouseover', function(event) {
             // Only target individual song rows during event delegation 
-            if (event.target.parentElement.className === 'album-view-song-item'){
-                // Change the content from the number to the play button's HTML 
+				if (event.target.parentElement.className === 'album-view-song-item') {
+        // Change the content from the number to the play button's HTML 
 				event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+				}
 				
 				var songItem = getSongItem(event.target);
 				
-				if(songItem.getAttribute('data-song-number') !== currentPlayingSong){
+				if(songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
 					songItem.innerHTML = playButtonTemplate;
 				}
-            }
 	});
         
-            for (var i = 0; i < songRows.length; i++) {
-                songRows[i].addEventListener('mouseleave', function(event) {
-                    // Selects first child element, which is the song-item-number element
-                var songItem = getSongItem(event.target);
-             	var songItemNumber = songItem.getAttribute('data-song-number');
- 
-            
-             	if (songItemNumber !== currentlyPlayingSong) {
-                 	songItem.innerHTML = songItemNumber;
-             	}
-            });
+		for (var i = 0; i < songRows.length; i++) {
+				songRows[i].addEventListener('mouseleave', function(event) {
+				// Selects first child element, which is the song-item-number element
+				var songItem = getSongItem(event.target);
+				var songItemNumber = songItem.getAttribute('data-song-number');
+						
+				if (songItemNumber !== currentlyPlayingSong) {
+            	songItem.innerHTML = songItemNumber;
+						}
+				});
 				songRows[i].addEventListener('click', function(event) {
 						// Event handler call 
 						clickHandler(event.target);
         	});
-		}	
+		}
+            
+  
+            // });
 				
-                                      
-    var albums = [albumMarconi, albumPicasso, albumAfrojack];
-    var index = 1;
-    
-    window.addEventListener("click", function(event) {  
-        setCurrentAlbum(albums[index]);
-        index++;
-        if (index == albums.length) {
-            index = 0;
-        }
-    });
+				
+//                                      
+//    var albums = [albumMarconi, albumPicasso, albumAfrojack];
+//    var index = 1;
+//    
+//    window.addEventListener("click", function(event) {  
+//        setCurrentAlbum(albums[index]);
+//        index++;
+//        if (index == albums.length) {
+//            index = 0;
+//        }
+//    });
 };
