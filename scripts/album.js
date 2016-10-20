@@ -36,17 +36,15 @@ var createSongRow = function (songNumber, songName, songLength) {
 	}
     }
 };
-	
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 		var clickHandler = function() {
 			var songNumber = parseInt($(this).attr('.data-song-number'));
 			
 			if (currentlyPlayingSongNumber !== null) {
 				var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
 				currentlyPlayingCell.html(currentlyPlayingSongNumber);
-=======
-<<<<<<< Updated upstream
+
+
 		var clickHandler = function () {
 			var songNumber = parseInt($(this).attr('.data-song-number'));
 			
@@ -54,14 +52,12 @@ var createSongRow = function (songNumber, songName, songLength) {
 				// Revert to song number for currently playing song because user started playing new song 
 				var currentlyPlayingCell = getSongNumberCell(setSong);
 				currentlyPlayingCell.html(setSong);
-=======
+
 		var clickHandler = function() {
 			var songNumber = parseInt($(this).attr('data-song-number'));
 			if (currentlyPlayingSongNumber !== null) {
 				var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
 				currentlyPlayingCell.html(currentlyPlayingSongNumber);
->>>>>>> Stashed changes
->>>>>>> 6546fc56c1838c9623a6d56be70879ee077ad231
 			}
 			
 			if (currentlyPlayingSongNumber !== songNumber){
@@ -94,7 +90,7 @@ var createSongRow = function (songNumber, songName, songLength) {
 		var offHover = function (event){
 			var songNumberCell = $(this).find('.song-item-number');
 			var songNumber = parseInt(songNumberCell.attr('data-song-number'));
-=======
+
 var onHover = function (event){
   var songNumberCell = $(this).find('.song-item-number');
   var songNumber = parseInt(songNumberCell.attr('data-song-number'));
@@ -107,8 +103,7 @@ var onHover = function (event){
 var offHover = function (event){
   var songNumberCell = $(this).find('.song-item-number');
   var songNumber = parseInt(songNumberCell.attr('data-song-number'));
->>>>>>> e6e056174c6d7cc66d6ace974b01403429ea8219
-			
+
   if (songNumber !== currentlyPlayingSongNumber) {
     songNumberCell.html(songNumber);
   }
@@ -155,24 +150,16 @@ var trackIndex = function(album, song) {
   return album.songs.indexOf(song);
 };
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> 6546fc56c1838c9623a6d56be70879ee077ad231
 var setSong = function(songNumber) {
-<<<<<<< HEAD
 	if (currentSoundFile) {
 		currentSoundFile.stop();
 	}
 	
 	currentlyPlayingSongNumber = parseInt(songNumber) ;
-<<<<<<< HEAD
 	currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
-=======
+
 //	console.log(songNumber)
 	currentSongFromAlbum = currentAlbum.songs[songNumber - 1]; //undefined
->>>>>>> 6546fc56c1838c9623a6d56be70879ee077ad231
 	
 	// setting the format of the song, using currentSongFromAlbum to grab the song
 	currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl, {
@@ -180,7 +167,6 @@ var setSong = function(songNumber) {
 		preload: true	
 	});
 	setVolume(currentVolume);
-=======
   if (currentSoundFile) {
     currentSoundFile.stop();
   }
@@ -194,13 +180,9 @@ var setSong = function(songNumber) {
     preload: true	
   });
  setVolume(currentVolume);
->>>>>>> e6e056174c6d7cc66d6ace974b01403429ea8219
+
 };
 
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> 6546fc56c1838c9623a6d56be70879ee077ad231
 // nextSong function is itterating through the current playing song and updating the bar to the current song 
 var nextSong = function() {
   var getLastSongNumber = function(index) {
