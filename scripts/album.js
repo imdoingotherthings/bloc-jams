@@ -13,12 +13,30 @@ var createSongRow = function (songNumber, songName, songLength) {
  
     var $row = $(template);
 	
+<<<<<<< HEAD
 		var clickHandler = function() {
 			var songNumber = parseInt($(this).attr('.data-song-number'));
 			
 			if (currentlyPlayingSongNumber !== null) {
 				var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
 				currentlyPlayingCell.html(currentlyPlayingSongNumber);
+=======
+<<<<<<< Updated upstream
+		var clickHandler = function () {
+			var songNumber = parseInt($(this).attr('.data-song-number'));
+			
+			if (setSong !== null) {
+				// Revert to song number for currently playing song because user started playing new song 
+				var currentlyPlayingCell = getSongNumberCell(setSong);
+				currentlyPlayingCell.html(setSong);
+=======
+		var clickHandler = function() {
+			var songNumber = parseInt($(this).attr('data-song-number'));
+			if (currentlyPlayingSongNumber !== null) {
+				var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
+				currentlyPlayingCell.html(currentlyPlayingSongNumber);
+>>>>>>> Stashed changes
+>>>>>>> 6546fc56c1838c9623a6d56be70879ee077ad231
 			}
 			
 			if (currentlyPlayingSongNumber !== songNumber){
@@ -98,13 +116,23 @@ var trackIndex = function(album, song) {
 	return album.songs.indexOf(song);
 };
 
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> 6546fc56c1838c9623a6d56be70879ee077ad231
 var setSong = function(songNumber) {
 	if (currentSoundFile) {
 		currentSoundFile.stop();
 	}
 	
 	currentlyPlayingSongNumber = parseInt(songNumber) ;
+<<<<<<< HEAD
 	currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+=======
+//	console.log(songNumber)
+	currentSongFromAlbum = currentAlbum.songs[songNumber - 1]; //undefined
+>>>>>>> 6546fc56c1838c9623a6d56be70879ee077ad231
 	
 	// setting the format of the song, using currentSongFromAlbum to grab the song
 	currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl, {
@@ -114,6 +142,10 @@ var setSong = function(songNumber) {
 	setVolume(currentVolume);
 };
 
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 6546fc56c1838c9623a6d56be70879ee077ad231
 // nextSong function is itterating through the current playing song and updating the bar to the current song 
 var nextSong = function() {
 	var getLastSongNumber = function(index) {
