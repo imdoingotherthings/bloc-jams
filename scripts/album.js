@@ -9,6 +9,7 @@ var createSongRow = function (songNumber, songName, songLength) {
  
     var $row = $(template);
 	
+<<<<<<< Updated upstream
 		var clickHandler = function () {
 			var songNumber = parseInt($(this).attr('.data-song-number'));
 			
@@ -16,6 +17,13 @@ var createSongRow = function (songNumber, songName, songLength) {
 				// Revert to song number for currently playing song because user started playing new song 
 				var currentlyPlayingCell = getSongNumberCell(setSong);
 				currentlyPlayingCell.html(setSong);
+=======
+		var clickHandler = function() {
+			var songNumber = parseInt($(this).attr('data-song-number'));
+			if (currentlyPlayingSongNumber !== null) {
+				var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
+				currentlyPlayingCell.html(currentlyPlayingSongNumber);
+>>>>>>> Stashed changes
 			}
 			
 			if (setSong !== songNumber){
@@ -85,6 +93,26 @@ var trackIndex = function(album, song) {
 	return album.songs.indexOf(song);
 };
 
+<<<<<<< Updated upstream
+=======
+var setSong = function(songNumber) {
+	if (currentSoundFile) {
+		currentSoundFile.stop();
+	}
+	
+	currentlyPlayingSongNumber = parseInt(songNumber) ;
+//	console.log(songNumber)
+	currentSongFromAlbum = currentAlbum.songs[songNumber - 1]; //undefined
+	
+	// setting the format of the song, using currentSongFromAlbum to grab the song
+	currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl, {
+		formats: [ 'mp3' ], 
+		preload: true	
+	});
+	setVolume(currentVolume);
+};
+
+>>>>>>> Stashed changes
 // nextSong function is itterating through the current playing song and updating the bar to the current song 
 var nextSong = function() {
 	var getLastSongNumber = function(index) {
