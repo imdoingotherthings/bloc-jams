@@ -278,16 +278,14 @@ var setTotalTimeInPlayerBar = function (totalTime) {
 };
 
 var filterTimeCode = function (timeInSeconds) {
-	var seconds = Math.floor(parseFloat(timeInSeconds % 60));
-	var minutes = Math.floor(timeInSeconds / 60);
-	var filterTime = minutes + ':';
-	filterTime += (seconds < 10) ? '0' + seconds : seconds;
-	return filterTime;
+	if (timeInSeconds !== undefined) {
+		var seconds = Math.floor(parseFloat(timeInSeconds % 60));
+		var minutes = Math.floor(timeInSeconds / 60);
+		var filterTime = minutes + ':';
+		filterTime += (seconds < 10) ? '0' + seconds : seconds;
+		return filterTime;
+	}	
 };
-
-// For debugging perposes 
-console.log(filterTime);
-console.log(currentSoundFile);
 
 
 var togglePlayFromPlayerBar = function() {
